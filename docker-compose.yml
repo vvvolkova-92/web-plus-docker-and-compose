@@ -13,7 +13,7 @@ services:
     networks:
       - kpd-backend
     ports:
-      - '4000:3000'
+      - '4000:5000'
     depends_on:
       - database
   kpd-frontend:
