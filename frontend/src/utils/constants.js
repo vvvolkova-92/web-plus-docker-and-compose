@@ -1,4 +1,4 @@
-export const URL = "https://api.alger.kupipodaridai.nomoredomains.monster";
+export const URL = "https://api.mult.ru.net";
 
 
 export const MINIMUM_PASSWORD_LENGTH = 3;
