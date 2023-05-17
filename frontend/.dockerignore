@@ -1,0 +1,7 @@
+dist/
+node_modules/
+../frontend/Dockerfile2
+docker-compose.yml
+.idea
+.DS_Store
+README.md

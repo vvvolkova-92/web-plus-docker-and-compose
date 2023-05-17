@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  kpd-backend:
+    container_name: kpd-backend
+#    build:
+#      context: backend
+#      dockerfile: Dockerfile
+#    image: kpd-backend
+    image: vvvolkova/kpd-backend
+    env_file: .env
+    restart: always
+    networks:
+      - kpd-backend
+    ports:
+      - '4000:3000'
+    depends_on:
+      - database
+  kpd-frontend:
+    container_name: kpd-frontend
+#    build:
+#      context: frontend
+#      dockerfile: Dockerfile
+#    image: kpd-frontend
+    image: vvvolkova/kpd-frontend
+    env_file: .env
+    restart: always
+    networks:
+      - kpd-frontend
+    ports:
+      - '8081:80'
+    depends_on:
+      - database
+  database:
+    container_name: kpd-db
+    image: postgres:latest
+    env_file: .env
+    restart: always
+    networks:
+      - kpd-backend
+    volumes:
+      - database:/data/database
+volumes:
+  database:
+networks:
+  kpd-frontend:
+  kpd-backend:

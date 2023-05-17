@@ -13,19 +13,27 @@ import { Wish } from "./wishes/entities/wish.entity";
 import { AuthModule } from "./auth/auth.module";
 import {ConfigModule} from "@nestjs/config";
 import * as process from "process";
+
+const {
+  POSTGRES_HOST = 'postgres',
+  POSTGRES_PORT = 1111,
+  POSTGRES_USER = 'usrm',
+  POSTGRES_PASSWORD = 'pswd',
+  POSTGRES_DB = 'kupipodariday',
+} = process.env;
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: `.env`,
+      envFilePath: `../../.env`,
     }),
     TypeOrmModule.forRoot({
       type: "postgres",
-      host: process.env.POSTGRES_HOST || 'localhost',
-      port: +process.env.POSTGRES_PORT || 5432,
-      username: process.env.POSTGRES_USERNAME || "student",
-      password: process.env.POSTGRES_PASSWORD || "364758",
-      database: process.env.POSTGRES_DATABASE || "kupipodariday",
+      host: POSTGRES_HOST,
+      port: +POSTGRES_PORT,
+      username: POSTGRES_USER,
+      password: POSTGRES_PASSWORD,
+      database: POSTGRES_DB,
       entities: [User, Offer, Wish, Wishlist],
       synchronize: true,
     }),
