@@ -12,7 +12,6 @@ import { Wishlist } from "./wishlists/entities/wishlist.entity";
 import { Wish } from "./wishes/entities/wish.entity";
 import { AuthModule } from "./auth/auth.module";
 import {ConfigModule} from "@nestjs/config";
-import * as process from "process";
 
 const {
   POSTGRES_HOST = 'postgres',
